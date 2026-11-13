@@ -1,0 +1,16 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: silicone-mold-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - MOLD_WORK_DIR=/tmp/silicone_mold_generator
+    volumes:
+      - mold_work_data:/tmp/silicone_mold_generator
+    restart: unless-stopped
+
+volumes:
+  mold_work_data:
